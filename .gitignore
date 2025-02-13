@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+/localstack_data/
+/src/main/.aws-sam/

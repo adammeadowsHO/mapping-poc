@@ -7,8 +7,8 @@ public class Lambda implements RequestHandler<String, String> {
 
     @Override
     public String handleRequest(String s, Context context) {
-        context.getLogger().log("Hello from Lambda!");
-        context.getLogger().log(s);
+        context.getLogger().log("Hello from Lambda!\n");
+        context.getLogger().log(s + "\n");
         return businessLogic("success");
     }
 

@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    environment:
+      - DEBUG=1                     # Enable debug output
+      - EDGE_PORT=4566              # Edge port for LocalStack
+      - SERVICES=lambda,s3          # Specify AWS services to emulate (Lambda and S3 in this case, add more if required)
+      - AWS_ACCESS_KEY_ID=test      # Dummy AWS access key
+      - AWS_SECRET_ACCESS_KEY=test  # Dummy AWS secret key
+      - DEFAULT_REGION=us-east-1    # Default AWS region
+      - LAMBDA_EXECUTOR=docker      # Use the Docker executor for running Lambda functions
+    ports:
+      - "4566:4566"                 # Map LocalStack edge service port
+      - "4510-4559:4510-4559"       # Additional service ports
+    volumes:
+      - ./localstack_data:/var/lib/localstack # Persist LocalStack data
+      - /var/run/docker.sock:/var/run/docker.sock # Docker socket to execute Lambda containers
+
+volumes:
+  localstack_data:
