@@ -38,3 +38,5 @@ out/
 
 /localstack_data/
 /src/main/.aws-sam/
+/FLService.wsdl
+/adamnotes.md

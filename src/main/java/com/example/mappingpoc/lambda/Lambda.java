@@ -13,6 +13,7 @@ public class Lambda implements RequestHandler<String, String> {
     }
 
     public String businessLogic(String s) {
+
         return s.toUpperCase();
     }
 
