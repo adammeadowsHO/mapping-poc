@@ -1,4 +1,4 @@
-package com.example.mappingpoc;
+package com.example.mappingpoc.mapstruct;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

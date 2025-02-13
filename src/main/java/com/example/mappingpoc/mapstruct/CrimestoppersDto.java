@@ -1,4 +1,4 @@
-package com.example.mappingpoc;
+package com.example.mappingpoc.mapstruct;
 
 import lombok.Value;
 
