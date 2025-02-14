@@ -7,9 +7,12 @@ In the .run folder, there is an example runner for Intellij
 To generate the wsdl. Run the following 
 
 ```
-curl -v https://core-report-and-manage-intelligence-ho-it-dev1-i-ie-ims.np.ebsa.homeoffice.gov.uk/lagan/schema/FLService.wsdl > FLService2.wsdl
+curl -v https://core-report-and-manage-intelligence-ho-it-dev1-i-ie-ims.np.ebsa.homeoffice.gov.uk/lagan/schema/FLService.wsdl > FLService.wsdl
 ```
-Then build the application.
+Then build the application. `./gradlew build`
+
+
+### Optional for a succesful build
 
 (You may need to remove the following from the file for it to work)
 ```

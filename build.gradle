@@ -15,7 +15,7 @@ java {
 ext.jaxwsSourceDir = "${buildDir}/generated/sources/jaxws"
 
 configurations {
-    jaxws // Define JAX-WS configuration
+    jaxws
     compileOnly {
         extendsFrom annotationProcessor
     }
