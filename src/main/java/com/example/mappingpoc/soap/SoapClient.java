@@ -1,20 +1,26 @@
 package com.example.mappingpoc.soap;
 
+import com.example.mappingpoc.wsdl.FLWebInterface;
 import com.example.mappingpoc.wsdl.FWTCaseCreate;
-import com.example.mappingpoc.wsdl.FWTException;
-import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+import com.example.mappingpoc.wsdl.ServiceException;
 
-public class SoapClient extends WebServiceGatewaySupport {
+public class SoapClient {
+
+    private final FLWebInterface flWebInterface;
+
+    public SoapClient(FLWebInterface flWebInterface) {
+        this.flWebInterface = flWebInterface;
+    }
 
     /***
      *
      * @return case reference as string
      */
-    public String createCase() {
-        FWTCaseCreate request = new FWTCaseCreate();
-        String response = (String) getWebServiceTemplate()
-                .marshalSendAndReceive(request);
+    public String createCase() throws ServiceException {
 
-        return response;
+        FWTCaseCreate request = new FWTCaseCreate();
+        String aCase = flWebInterface.createCase(request);
+
+        return aCase;
     }
 }
