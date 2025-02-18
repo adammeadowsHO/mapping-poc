@@ -3,14 +3,12 @@ package com.example.mappingpoc.soap;
 import com.example.mappingpoc.wsdl.FLWebInterface;
 import com.example.mappingpoc.wsdl.FWTCaseCreate;
 import com.example.mappingpoc.wsdl.ServiceException;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class SoapClient {
 
     private final FLWebInterface flWebInterface;
-
-    public SoapClient(FLWebInterface flWebInterface) {
-        this.flWebInterface = flWebInterface;
-    }
 
     /***
      *
@@ -19,6 +17,19 @@ public class SoapClient {
     public String createCase() throws ServiceException {
 
         FWTCaseCreate request = new FWTCaseCreate();
+
+
+        request.setClassificationEventCode(5);
+        request.setTitle("Test title");
+        request.setDescription("Test description");
+        request.setQueue("Test queue");
+        /*
+         ClassificationEventCode: config.ims.PublicAllegationsEventCode,
+    Title: config.ims.title,
+    Description: config.ims.description,
+    Queue: config.ims.queue
+         */
+
         String aCase = flWebInterface.createCase(request);
 
         return aCase;

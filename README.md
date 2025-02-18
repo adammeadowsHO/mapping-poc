@@ -1,5 +1,5 @@
 # Lambda 
-Install SAM CLI and docker.
+Install SAM CLI, docker and IntelliJ AWS toolkit.
 
 In the .run folder, there is an example runner for Intellij
  
@@ -7,7 +7,7 @@ In the .run folder, there is an example runner for Intellij
 To generate the wsdl. Run the following 
 
 ```
-curl -v https://core-report-and-manage-intelligence-ho-it-dev1-i-ie-ims.np.ebsa.homeoffice.gov.uk/lagan/schema/FLService.wsdl > FLService.wsdl
+curl -v REDACTED/lagan/schema/FLService.wsdl > src/main/resources/FLService.wsdl
 ```
 Then build the application. `./gradlew build`
 

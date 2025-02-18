@@ -40,3 +40,5 @@ out/
 /src/main/.aws-sam/
 /FLService.wsdl
 /adamnotes.md
+/src/main/resources/FLService.wsdl
+/src/main/resources/application-prod.properties
