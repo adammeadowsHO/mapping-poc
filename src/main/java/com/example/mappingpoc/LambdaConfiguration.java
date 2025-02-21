@@ -4,7 +4,9 @@ import com.example.mappingpoc.config.SecretsManager;
 import com.example.mappingpoc.soap.CustomWebService;
 import com.example.mappingpoc.soap.SoapClient;
 import com.example.mappingpoc.wsdl.FLWebInterface;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Value;
+import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
@@ -16,11 +18,19 @@ public class LambdaConfiguration {
     SoapClient soapClient;
 
     public LambdaConfiguration() {
-        secretsManager = new SecretsManager();
-        authenticateSoap(secretsManager);
+        ObjectMapper objectMapper = getObjectMapper();
+        SecretsManagerClient secretsManagerClient = SecretsManagerClient.builder().build();
+        secretsManager = new SecretsManager(objectMapper, secretsManagerClient, "/secrets/todo");
+        secretsManager.initSecrets();
 
         FLWebInterface fl = new CustomWebService().getFL();
         soapClient = new SoapClient(fl);
+        authenticateSoap(secretsManager);
+    }
+
+    public static ObjectMapper getObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper;
     }
 
     private void authenticateSoap(SecretsManager secretsManager) {

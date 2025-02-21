@@ -4,14 +4,12 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.example.mappingpoc.LambdaConfiguration;
 import com.example.mappingpoc.wsdl.ServiceException;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class Lambda implements RequestHandler<String, String> {
 
     private final LambdaConfiguration lambdaConfiguration;
-
-    public Lambda() {
-        lambdaConfiguration = new LambdaConfiguration();
-    }
 
     @Override
     public String handleRequest(String s, Context context) {
@@ -21,7 +19,6 @@ public class Lambda implements RequestHandler<String, String> {
     }
 
     public String businessLogic() {
-
         try {
             var caseRef = lambdaConfiguration.getSoapClient().createCase();
             System.out.println(caseRef);

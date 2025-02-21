@@ -3,6 +3,9 @@ package com.example.mappingpoc.soap;
 import com.example.mappingpoc.wsdl.FLWebInterface;
 import com.example.mappingpoc.wsdl.FWTCaseCreate;
 import com.example.mappingpoc.wsdl.ServiceException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -17,7 +20,6 @@ public class SoapClient {
     public String createCase() throws ServiceException {
 
         FWTCaseCreate request = new FWTCaseCreate();
-
 
         request.setClassificationEventCode(5);
         request.setTitle("Test title");
